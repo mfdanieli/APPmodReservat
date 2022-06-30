@@ -12,7 +12,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
-
+import xlrd
 #%% Import the dataset
 # df = pd.read_csv("diabetes.csv")
 
