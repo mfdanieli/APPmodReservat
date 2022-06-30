@@ -11,6 +11,12 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import sklearn
+from sklearn.model_selection import train_test_split
+import streamlit as st
+from sklearn.metrics import accuracy_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
 
 #%% Import the dataset
 # df = pd.read_csv("diabetes.csv")
