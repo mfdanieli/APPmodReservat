@@ -23,7 +23,7 @@ import xlrd
 def concentracao(CARGA, taxa_Cin, taxa_Qin, taxa_Qout):
     #taxa_Cin = 1
     # dados
-    df = pd.read_excel('Histórico_G. B. MUNHOZ_processado.xlsx')
+    df = pd.read_excel('Histórico_G. B. MUNHOZ_processado.xlsx', engine="openpyxl")
     df_dbo = pd.read_csv('4_PO4_sintetica_porto_vitoria.txt',sep='\t',header=None,names=['PO4'])
     A = df['AREA (KM2)'].apply(lambda x: x*10**6)  # area de km2 para m2
     V = df['VOLUME (M3)']
