@@ -124,6 +124,15 @@ graf = st.line_chart(prediction)
 st.write(prediction)
 
 
+# # curva permanencia
+# conc_org = prediction.sort_values()
+# exceedence = np.arange(1.,len(conc_org)+1) / len(conc_org)
+# data = {'Conc':conc_org, 'Freq':exceedence}
+# data_f = pd.DataFrame(data)
+# graf2 = st.line_chart(data_f)
+            
+
+
 # Acurácia do modelo 
 #st.subheader('Acuracia do modelo')
 # st.write(accuracy_score(y_test, knn.predict(X_test))*100)
