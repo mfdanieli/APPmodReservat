@@ -62,7 +62,7 @@ def concentracao(CARGA, taxa_Cin, taxa_Qin, taxa_Qout):
 # Title
 st.write("""
 APP Teste \n
-Carga reservatorio      
+Modelo 0D Reservatorio Foz do Areia     
 """)
 
 # Cabeçalho
@@ -75,10 +75,10 @@ st.subheader('Informações dos dados')
 
 # dados dos usuários com a função
 def get_user_data():
-    taxa_Qin = st.sidebar.slider('VazInput (% of original)', 0.1, 2.0, 1.0)
-    taxa_Qout = st.sidebar.slider('VazOutput (% of original)', 0.1, 2.0, 1.0)
-    CARGA = st.sidebar.slider('LoadInput (t/yr)', 0.0, 1000.0, 0.0)
-    taxa_Cin = st.sidebar.slider('ConcInput (% of original)', 0.1, 2.0, 1.0)
+    taxa_Qin = st.sidebar.slider('Q_Input (choose % of original)', 0.1, 2.0, 1.0)
+    taxa_Qout = st.sidebar.slider('Q_Output (choose % of original)', 0.1, 2.0, 1.0)
+    CARGA = st.sidebar.slider('Load_Input (t/yr)', 0.0, 1000.0, 0.0)
+    taxa_Cin = st.sidebar.slider('Conc_Input (choose % of original)', 0.1, 2.0, 1.0)
     # A = st.sidebar.slider('Area', 0.0, 900.0, 30.0)
     # vel = st.sidebar.slider('Veloc', 0.01, 70.0, 15.0)
     # V = st.sidebar.slider('Volume', 0.0, 3.0, 0.0)
@@ -94,10 +94,10 @@ def get_user_data():
     #             'Volume': V,
     #             'Kinetics': k
     #              }
-    user_data = {'LoadInput': CARGA,
-                 'ConcInput': taxa_Cin,
-                 'VazInput': taxa_Qin,
-                 'VazOutput': taxa_Qout
+    user_data = {'Load_Input': CARGA,
+                 'Conc_Input': taxa_Cin,
+                 'Q_Input': taxa_Qin,
+                 'Q_Output': taxa_Qout
                  }
     
     #features = pd.DataFrame(user_data,index=[0])
