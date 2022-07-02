@@ -126,8 +126,7 @@ st.write(prediction)
 
 # # curva permanencia
 
-#conc_org = pd.Series(prediction).sort_values() 
-conc_org = prediction.sort(reverse=True)
+conc_org = pd.Series(prediction).sort_values(ascending=True) 
 #prediction.sort_values()
 graf = st.line_chart(conc_org)
 # exceedence = np.arange(1.,len(conc_org)+1) / len(conc_org)
