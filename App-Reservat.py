@@ -135,7 +135,7 @@ data = {'Conc':conc_org, 'Freq':exceedence}
 data_f = pd.DataFrame(data)
 st.write(data_f)
 #graf2 = st.line_chart(data_f)
-alt.Chart(source).mark_line().encode(
+alt.Chart(data_f).mark_line().encode(
     x='Freq',
     y='Conc'
 )            
