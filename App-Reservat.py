@@ -138,9 +138,15 @@ st.write(data_f)
 #graf2 = st.line_chart(data_f)
 chart = alt.Chart(data_f).mark_line().encode(
     x='Freq',
-    y='Conc'
+    y=0.01
 )            
-chart
+
+classe = alt.Chart(data_f).mark_line().encode(
+    x='Freq',
+    y='Conc'
+)    
+
+chart + classe
 
 
 # Acurácia do modelo 
