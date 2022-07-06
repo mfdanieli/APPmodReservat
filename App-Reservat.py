@@ -145,8 +145,10 @@ chart = alt.Chart(data_f).mark_line().encode(
 classe = alt.Chart(data_f).mark_line().encode(
     x='Freq',
     y='Clase',
-    color='weather',
-)    
+).configure_mark(
+    opacity=0.8,
+    color='red'
+)   
 
 chart + classe
 
