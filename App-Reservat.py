@@ -54,7 +54,7 @@ def concentracao(CARGA, taxa_Cin, taxa_Qin, taxa_Qout):
     for i in range(n-1):
         Cout[i + 1] = (Cout[i] + (dt/V[i + 1])*(Qin[i + 1]*Cin[i + 1]) + float(WW)*dt/V[i]) / (1 + (dt/V[i + 1])*(Qout[i + 1] + k*V[i + 1] + vel*2*A[i + 1] + (V[i + 1] - V[i])/dt))                                                            
         carga_permis[i] = (0.03/1000)*(Qout[i]-Qin[i])  # kg/s
-        carga_reserv[i] = (Cout[i])*(Qou[i]t-Qin[i])
+        carga_reserv[i] = (Cout[i])*(Qout[i]-Qin[i])
         perc_remover[i] = 100*(1-carga_permis[i]/carga_reserv[i])
         #conc_out.append(Cout)
     #return conc_out*1000
