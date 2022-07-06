@@ -140,7 +140,7 @@ chart = alt.Chart(data_f).mark_line().encode(
     x='Freq',
     y='Conc'
 )            
-
+chart
 
 
 # Acurácia do modelo 
