@@ -142,12 +142,9 @@ chart = alt.Chart(data_f).mark_line().encode(
     y='Conc'
 )            
 
-classe = alt.Chart(data_f).mark_line().encode(
+classe = alt.Chart(data_f).mark_line(opacity=0.8,color='red').encode(
     x='Freq',
-    y='Clase',
-).configure_mark(
-    opacity=0.8,
-    color='red'
+    y='Clase'
 )   
 
 chart + classe
