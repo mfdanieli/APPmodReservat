@@ -154,6 +154,10 @@ st.subheader('Número de vezes em que classe 2 é excedida')
 st.write(excedencia)
 
 st.subheader('Carga a remover')
+carga_permis = (0.03/1000)*(Qout-Qin)  # kg/s
+carga_reserv = (prediction/1000)*(Qout-Qin)
+perc_remover = 100*(1-carga_permis/carga_reserv)
+st.write(perc_remover)
 
 # Acurácia do modelo 
 #st.subheader('Acuracia do modelo')
