@@ -147,7 +147,8 @@ classe = alt.Chart(data_f).mark_line().encode(
     y='Clase'
 )    
 
-chart + classe
+chart 
+classe
 
 
 # Acurácia do modelo 
