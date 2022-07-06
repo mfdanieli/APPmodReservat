@@ -132,7 +132,7 @@ conc_org = pd.Series(prediction).sort_values(ascending=True)
 #prediction.sort_values()
 # graf = st.line_chart(conc_org)
 exceedence = np.arange(1.,len(conc_org)+1) / len(conc_org)
-data = {'Conc':conc_org, 'Freq':exceedence, 'Clase': np.full((1, len(conc_org)), 0.01)}
+data = {'Conc':conc_org, 'Freq':exceedence, 'Clase': np.ones(len(conc_org))*0.01}
 data_f = pd.DataFrame(data)
 st.write(data_f)
 #graf2 = st.line_chart(data_f)
