@@ -14,6 +14,7 @@ import seaborn as sns
 import streamlit as st
 import xlrd
 import altair as alt
+import altair_viewer
 #%% Import the dataset
 # df = pd.read_csv("diabetes.csv")
 
@@ -139,7 +140,8 @@ chart = alt.Chart(data_f).mark_line().encode(
     x='Freq',
     y='Conc'
 )            
-chart.show()
+altair_viewer.display(chart)
+
 
 # Acurácia do modelo 
 #st.subheader('Acuracia do modelo')
