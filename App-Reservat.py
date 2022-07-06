@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 import xlrd
+import altair as alt
 #%% Import the dataset
 # df = pd.read_csv("diabetes.csv")
 
@@ -133,8 +134,11 @@ exceedence = np.arange(1.,len(conc_org)+1) / len(conc_org)
 data = {'Conc':conc_org, 'Freq':exceedence}
 data_f = pd.DataFrame(data)
 st.write(data_f)
-graf2 = st.line_chart(data_f)
-            
+#graf2 = st.line_chart(data_f)
+alt.Chart(source).mark_line().encode(
+    x='Freq',
+    y='Conc'
+)            
 
 
 # Acurácia do modelo 
