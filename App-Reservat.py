@@ -49,20 +49,20 @@ def concentracao(CARGA, taxa_Cin, taxa_Qin, taxa_Qout):
 
     WW=(CARGA*1000)/(86400*365)  # kg/s
     
+    carga_permis = (0.03/1000)*(Qout-Qin)  # kg/s
+    
     # Sol numerica
     # conc_out = []
+    carga_reserv = np.zeros(n)
     for i in range(n-1):
         Cout[i + 1] = (Cout[i] + (dt/V[i + 1])*(Qin[i + 1]*Cin[i + 1]) + float(WW)*dt/V[i]) / (1 + (dt/V[i + 1])*(Qout[i + 1] + k*V[i + 1] + vel*2*A[i + 1] + (V[i + 1] - V[i])/dt))                                                            
         #conc_out.append(Cout)
     #return conc_out*1000
-    # carga_permis = (0.03/1000)*(Qout-Qin)  # kg/s
-    # carga_reserv = (Cout)*(Qout-Qin)
-    # perc_remover = 100*(1-carga_permis/carga_reserv)
-    ##
+        
+        carga_reserv[i + 1] = (Cout[i + 1] )*(Qout[i + 1] -Qin[i + 1] )
 
     
-    
-    return Cout*1000#, perc_remover
+    return [Cout*1000], [carga_permis], [carga_reserv]
 
 
 
@@ -161,9 +161,8 @@ st.subheader('Número de vezes em que classe 2 é excedida')
 st.write(excedencia)
 
 st.subheader('Carga a remover')
-#st.write(perc_remover)
-
-
+perc_remover = 100*(1-carga_permis/carga_reserv)
+st.write(perc_remover)
 
 
 #st.subheader('Previsão: ')
