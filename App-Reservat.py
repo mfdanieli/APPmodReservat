@@ -54,12 +54,13 @@ def concentracao(CARGA, taxa_Cin, taxa_Qin, taxa_Qout):
     # Sol numerica
     # conc_out = []
     carga_reserv = np.zeros(n)
+    Cout[0] = carga_permis[0]
     for i in range(n-1):
         Cout[i + 1] = (Cout[i] + (dt/V[i + 1])*(Qin[i + 1]*Cin[i + 1]) + float(WW)*dt/V[i]) / (1 + (dt/V[i + 1])*(Qout[i + 1] + k*V[i + 1] + vel*2*A[i + 1] + (V[i + 1] - V[i])/dt))                                                            
         #conc_out.append(Cout)
     #return conc_out*1000
         
-        carga_reserv[i + 1] = (Cout[i + 1] )*(Qout[i + 1] -Qin[i + 1] )
+        carga_reserv[i + 1] = (Cout[i + 1] )*(Qout[i + 1] - Qin[i + 1] )
 
     
     return [Cout*1000], [carga_permis], [carga_reserv]
