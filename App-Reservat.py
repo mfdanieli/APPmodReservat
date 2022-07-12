@@ -51,6 +51,8 @@ def concentracao(CARGA, taxa_Cin, taxa_Qin, taxa_Qout):
     
     # Sol numerica
     carga_permis = []
+    carga_reserv = []
+    perc_remover = []
     # carga_permis = np.zeros(n)
     # carga_permis = np.zeros(n)
     # carga_reserv = np.zeros(n)
@@ -62,10 +64,10 @@ def concentracao(CARGA, taxa_Cin, taxa_Qin, taxa_Qout):
         #conc_out.append(Cout)
     #return conc_out*1000
     carga_permis = (0.03/1000)*(Qout[:-1]-Qin[:-1])  # kg/s NAO SERIA SÓ QOUT?
-    # carga_reserv = (Cout[i + 1] )*(Qout - Qin)
-    # perc_remover = 100*(1-carga_permis/carga_reserv)
+    carga_reserv = (Cout[i + 1] )*(Qout - Qin)
+    perc_remover = 100*(1-carga_permis/carga_reserv)
     print (carga_permis)
-    return Cout*1000, carga_permis#, [carga_reserv]
+    return Cout*1000, carga_permis, carga_reserv, perc_remover
 
 
 
@@ -129,7 +131,7 @@ st.write(type(user_input_variables))
 
 # Previsao
 ## prediction = concentracao(user_input_variables_standard)
-prediction, carga_permis = concentracao(user_input_variables[0],user_input_variables[1],user_input_variables[2],user_input_variables[3])
+prediction, carga_permis, carga_reserv, perc_remover = concentracao(user_input_variables[0],user_input_variables[1],user_input_variables[2],user_input_variables[3])
 
 
 graf = st.line_chart(prediction)
