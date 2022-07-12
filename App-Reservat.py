@@ -169,7 +169,7 @@ st.write(excedencia)
 
 st.subheader('Carga a remover')
 st.write(perc_remover)
-
+st.bar_chart(perc_remover)
 
 #st.subheader('Previsão: ')
 #st.write(prediction)
