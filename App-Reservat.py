@@ -63,7 +63,8 @@ def concentracao(CARGA, taxa_Cin, taxa_Qin, taxa_Qout):
         Cout[i + 1] = (Cout[i] + (dt/V[i + 1])*(Qin[i + 1]*Cin[i + 1]) + float(WW)*dt/V[i]) / (1 + (dt/V[i + 1])*(Qout[i + 1] + k*V[i + 1] + vel*2*A[i + 1] + (V[i + 1] - V[i])/dt))                                                            
         #conc_out.append(Cout)
     #return conc_out*1000
-    carga_permis = (0.03/1000)*(Qin[:-1]-Qout[:-1])  # kg/s NAO SERIA SÓ QOUT?
+    Q95 = np.percentile(Qin, 25)  # perc
+    carga_permis = (0.03/1000)*(Q95)  # kg/s ; tinha pego (Qin[:-1]-Qout[:-1]), mas faz mais sentido a Q_95 do rio > confirmar se peguei o valor certo na linha acima
     carga_reserv = (Cout[i + 1] )*(Qin-Qout)
     perc_remover = 100*(1-carga_permis/carga_reserv)
     perc_remover[perc_remover < 0] = 0
