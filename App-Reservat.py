@@ -168,8 +168,8 @@ st.subheader('Número de vezes em que classe 2 é excedida')
 st.write(excedencia)
 
 st.subheader('Carga a remover')
-# st.write(perc_remover)
-st.write(carga_permis)
+st.write(perc_remover)
+
 
 #st.subheader('Previsão: ')
 #st.write(prediction)
