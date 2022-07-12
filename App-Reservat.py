@@ -67,7 +67,7 @@ def concentracao(CARGA, taxa_Cin, taxa_Qin, taxa_Qout):
     carga_reserv = (Cout[i + 1] )*(Qin-Qout)
     perc_remover = 100*(1-carga_permis/carga_reserv)
     perc_remover[perc_remover < 0] = 0
-    #print (carga_permis)
+    # print (perc_remover)
     return Cout*1000, carga_permis, carga_reserv, perc_remover
 
 
