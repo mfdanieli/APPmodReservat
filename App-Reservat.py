@@ -65,7 +65,7 @@ def concentracao(CARGA, taxa_Cin, taxa_Qin, taxa_Qout):
     # carga_reserv = (Cout[i + 1] )*(Qout - Qin)
     # perc_remover = 100*(1-carga_permis/carga_reserv)
     print (carga_permis)
-    return [Cout*1000]#, [carga_permis]#, [carga_reserv]
+    return Cout*1000, carga_permis#, [carga_reserv]
 
 
 
@@ -129,7 +129,7 @@ st.write(type(user_input_variables))
 
 # Previsao
 ## prediction = concentracao(user_input_variables_standard)
-prediction = concentracao(user_input_variables[0],user_input_variables[1],user_input_variables[2],user_input_variables[3])
+prediction, carga_permis = concentracao(user_input_variables[0],user_input_variables[1],user_input_variables[2],user_input_variables[3])
 
 
 graf = st.line_chart(prediction)
