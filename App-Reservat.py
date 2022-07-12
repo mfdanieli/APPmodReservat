@@ -65,7 +65,7 @@ def concentracao(CARGA, taxa_Cin, taxa_Qin, taxa_Qout):
     #return conc_out*1000
     Q95 = np.percentile(Qin, 25)  # perc
     carga_permis = (0.03/1000)*(Q95)  # kg/s ; tinha pego (Qin[:-1]-Qout[:-1]), mas faz mais sentido a Q_95 do rio > confirmar se peguei o valor certo na linha acima
-    carga_reserv = (Cout[i + 1] )*(Qin-Qout)
+    carga_reserv = (Cout[i + 1] )*(Qout) # tinha posto Qin-Qout antes
     perc_remover = 100*(1-carga_permis/carga_reserv)
     perc_remover[perc_remover < 0] = 0
     # print (perc_remover)
@@ -168,7 +168,7 @@ st.subheader('Número de vezes em que classe 2 é excedida')
 st.write(excedencia)
 
 st.subheader('Carga a remover')
-st.write(carga_permis)
+st.write(perc_remover)
 st.bar_chart(perc_remover)
 
 #st.subheader('Previsão: ')
