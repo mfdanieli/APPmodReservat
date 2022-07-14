@@ -82,7 +82,10 @@ Modelo 0D Reservatorio Foz do Areia
 """)
 
 # Cabeçalho
-st.subheader('Informações dos dados')
+#st.subheader('')
+
+with st.expander.subheader("How to use"):
+    st.write("bla")
 
 # Nome do usuário
 # user_input = st.sidebar.text_input('Digite seu nome')
@@ -92,8 +95,6 @@ st.subheader('Informações dos dados')
 # dados dos usuários com a função
 def get_user_data():
     taxa_Qin = st.sidebar.slider('Q_Input (choose % of original)', 0.1, 2.0, 1.0)
-    with st.expander("open"):
-        st.write("bla")
     taxa_Qout = st.sidebar.slider('Q_Output (choose % of original)', 0.1, 2.0, 1.0)
     CARGA = st.sidebar.slider('Load_Input (t/yr)', 0.0, 1000.0, 0.0)
     taxa_Cin = st.sidebar.slider('Conc_Input (choose % of original)', 0.1, 2.0, 1.0)
