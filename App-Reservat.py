@@ -86,8 +86,12 @@ Modelo 0D Reservatorio Foz do Areia
 
 st.header('Teste')
 
-with st.expander("How to use"):
-    st.write("bla")
+with st.expander("How does it work?"):
+    st.write("""
+             In the box at left you can select\n
+             1. The percent of change of original flow entering the reservoir
+             
+    """)
 
 # Nome do usuário
 # user_input = st.sidebar.text_input('Digite seu nome')
