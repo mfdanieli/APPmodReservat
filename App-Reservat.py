@@ -84,7 +84,9 @@ Modelo 0D Reservatorio Foz do Areia
 # Cabeçalho
 #st.subheader('')
 
-with st.expander.subheader("How to use"):
+st.header('Teste')
+
+with st.expander("How to use"):
     st.write("bla")
 
 # Nome do usuário
