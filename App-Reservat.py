@@ -92,6 +92,8 @@ st.subheader('Informações dos dados')
 # dados dos usuários com a função
 def get_user_data():
     taxa_Qin = st.sidebar.slider('Q_Input (choose % of original)', 0.1, 2.0, 1.0)
+    with st.expander("open"):
+        st.write("bla")
     taxa_Qout = st.sidebar.slider('Q_Output (choose % of original)', 0.1, 2.0, 1.0)
     CARGA = st.sidebar.slider('Load_Input (t/yr)', 0.0, 1000.0, 0.0)
     taxa_Cin = st.sidebar.slider('Conc_Input (choose % of original)', 0.1, 2.0, 1.0)
