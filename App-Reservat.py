@@ -121,22 +121,22 @@ st.write(data_f)
 #graf2 = st.line_chart(data_f)
 
 chart = alt.Chart(data_f).mark_line().encode(
-    x='Freq',
-    y='Conc'
+    x='Frequency',
+    y='Concentration (mg/L)'
 )            
 
 classe = alt.Chart(data_f).mark_line(opacity=0.6,color='red').encode(
-    x='Freq',
-    y='Clase'
+    x='Frequency',
+    y='Class limit'
 )   
 
 chart + classe
 
 excedencia = sum(i > 0.03 for i in prediction)
-st.subheader('Número de vezes em que classe 2 é excedida')
+st.subheader('The number of times a limit class (2) has been exceeded')
 st.write(excedencia)
 
-st.subheader('Carga a remover (media 2 anos)')
+st.subheader('Load to remove')
 st.write(perc_remover)
 st.bar_chart(perc_remover)
 
@@ -144,8 +144,8 @@ st.bar_chart(perc_remover)
 # custos = 551 euros/kg reduzido
 # 
 
-st.write(carga_permis)
-st.write(carga_reserv)
+# st.write(carga_permis)
+# st.write(carga_reserv)
 
 #st.subheader('Previsão: ')
 #st.write(prediction)
@@ -153,23 +153,23 @@ st.write(carga_reserv)
 
 ######################################### curva permanencia CARGA ############# 
 
-carga_reserv_org = pd.Series(carga_reserv).sort_values(ascending=True) 
+# carga_reserv_org = pd.Series(carga_reserv).sort_values(ascending=True) 
 
-exceedence = np.arange(1.,len(carga_reserv_org)+1) / len(carga_reserv_org)
-data = {'Carga':carga_reserv_org, 'Freq':exceedence*100, 'Clase': carga_permis}
-data_f = pd.DataFrame(data)
-st.write(data_f)
-#graf2 = st.line_chart(data_f)
+# exceedence = np.arange(1.,len(carga_reserv_org)+1) / len(carga_reserv_org)
+# data = {'Carga':carga_reserv_org, 'Freq':exceedence*100, 'Clase': carga_permis}
+# data_f = pd.DataFrame(data)
+# st.write(data_f)
+# #graf2 = st.line_chart(data_f)
 
-chart = alt.Chart(data_f).mark_line().encode(
-    x='Freq',
-    y='Carga'
-)            
+# chart = alt.Chart(data_f).mark_line().encode(
+#     x='Freq',
+#     y='Carga'
+# )            
 
-classe = alt.Chart(data_f).mark_line(opacity=0.6,color='red').encode(
-    x='Freq',
-    y='Clase'
-)   
+# classe = alt.Chart(data_f).mark_line(opacity=0.6,color='red').encode(
+#     x='Freq',
+#     y='Clase'
+# )   
 
-chart + classe
+# chart + classe
 
