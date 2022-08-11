@@ -56,8 +56,7 @@ def concentracao(CARGA):#, taxa_Cin, taxa_Qin, taxa_Qout):
     carga_reserv = (Cout[i + 1] )*(Qout) # Qin-Qout ou Qout?
     perc_remover = 100*(1-carga_permis/carga_reserv)
     perc_remover[perc_remover < 0] = 0
-
-    
+ 
     return Cout*1000, carga_permis, carga_reserv, perc_remover
 
 
@@ -140,8 +139,8 @@ st.subheader('Número de vezes em que classe 2 é excedida')
 st.write(excedencia)
 
 st.subheader('Carga a remover (media 2 anos)')
-st.write(perc_remover.mean())
-#st.bar_chart(perc_remover)
+st.write(perc_remover)
+st.bar_chart(perc_remover)
 
 # custos remocao 
 # custos = 551 euros/kg reduzido
@@ -153,4 +152,26 @@ st.write(carga_reserv)
 #st.subheader('Previsão: ')
 #st.write(prediction)
 
+
+######################################### curva permanencia CARGA ############# 
+
+carga_reserv_org = pd.Series(carga_reserv).sort_values(ascending=True) 
+
+exceedence = np.arange(1.,len(carga_reserv_org)+1) / len(carga_reserv_org)
+data = {'Carga':carga_reserv_org, 'Freq':exceedence*100, 'Clase': carga_permis}
+data_f = pd.DataFrame(data)
+st.write(data_f)
+#graf2 = st.line_chart(data_f)
+
+chart = alt.Chart(data_f).mark_line().encode(
+    x='Freq',
+    y='Carga'
+)            
+
+classe = alt.Chart(data_f).mark_line(opacity=0.6,color='red').encode(
+    x='Freq',
+    y='Clase'
+)   
+
+chart + classe
 
