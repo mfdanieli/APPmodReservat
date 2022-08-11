@@ -76,9 +76,7 @@ st.header('Modelo 0D Reservatorio Foz do Areia  ')
 
 with st.expander("How to use"):
     st.write("""
-             In the box at left you can select\n
-             1. The percent of change of original flow entering the reservoir\n
-             
+             In the box at left you can select the input load to the reservoir\n             
     """)
 
 
@@ -114,7 +112,7 @@ st.write(prediction)
 
 # # curva permanencia
 
-conc_org = pd.Series(prediction).sort_values(ascending=True) 
+conc_org = pd.Series(prediction).sort_values(ascending=False)  # descending order
 
 exceedence = np.arange(1.,len(conc_org)+1) / len(conc_org)
 data = {'Conc':conc_org, 'Freq':exceedence*100, 'Clase': np.ones(len(conc_org))*0.03}
