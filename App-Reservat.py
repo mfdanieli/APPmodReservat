@@ -72,19 +72,19 @@ def concentracao(CARGA):#, taxa_Cin, taxa_Qin, taxa_Qout):
 # Cabeçalho
 #st.subheader('')
 
-st.header('Modelo 0D Reservatorio Foz do Areia  ')
+st.header('CSTR model: Foz do Areia reservoir')
 
-with st.expander("How to use"):
-    st.write("""
-             In the box at left you can select the input load to the reservoir\n             
-    """)
+# with st.expander("How to use"):
+#     st.write("""
+#              In the box at left you can select the input load to the reservoir\n             
+#     """)
 
 
 # dados dos usuários com a função
 def get_user_data():
     # taxa_Qin = st.sidebar.slider('Q_Input (choose % of original)', 1.0, 2.0)
     # taxa_Qout = st.sidebar.slider('Q_Output (choose % of original)', 1.0, 2.0)
-    CARGA = st.sidebar.slider('Load_Input (t/yr)', 0.0, 1000.0, 0.0)
+    CARGA = st.sidebar.slider('Load_Input (t/yr)', 0.1 , 1000.0, 0.0)
     # taxa_Cin = st.sidebar.slider('Conc_Input (choose % of original)', 0.1, 2.0, 1.0)
   
     
@@ -106,7 +106,16 @@ user_input_variables = get_user_data()
 # prediction, carga_permis, carga_reserv, perc_remover = concentracao(user_input_variables[0],user_input_variables[1],user_input_variables[2],user_input_variables[3])
 prediction, carga_permis, carga_reserv, perc_remover = concentracao(user_input_variables)
 
-graf = st.line_chart(prediction)
+
+# graf = st.line_chart(prediction)
+dias = np.arange(0,len(prediction))
+data1 = {'Concentration_prediction (mg/L)':pd.Series(prediction), 'Time (days)': dias}
+data_f1 = pd.DataFrame(data1)
+graf = alt.Chart(data_f1).mark_line().encode(
+    x='Time (days)',
+    y='Concentration_prediction (mg/L)'
+)         
+graf   
 #st.write(prediction)
 
 
@@ -115,30 +124,30 @@ graf = st.line_chart(prediction)
 conc_org = pd.Series(prediction).sort_values(ascending=False)  # descending order
 
 exceedence = np.arange(1.,len(conc_org)+1) / len(conc_org)
-data = {'Conc':conc_org, 'Freq':exceedence*100, 'Clase': np.ones(len(conc_org))*0.03}
+data = {'Concentration (mg/L)':conc_org, 'Frequency (%)':exceedence*100, 'Class limit': np.ones(len(conc_org))*0.03}
 data_f = pd.DataFrame(data)
-st.write(data_f)
+#st.write(data_f)
 #graf2 = st.line_chart(data_f)
 
 chart = alt.Chart(data_f).mark_line().encode(
-    x='Frequency',
+    x='Frequency (%)',
     y='Concentration (mg/L)'
 )            
 
 classe = alt.Chart(data_f).mark_line(opacity=0.6,color='red').encode(
-    x='Frequency',
+    x='Frequency (%)',
     y='Class limit'
 )   
 
 chart + classe
 
 excedencia = sum(i > 0.03 for i in prediction)
-st.subheader('The number of times a limit class (2) has been exceeded')
+st.subheader('The number of times class 2 has been exceeded')
 st.write(excedencia)
 
-st.subheader('Load to remove')
-st.write(perc_remover)
-st.bar_chart(perc_remover)
+st.subheader('Mean load to remove (%)')
+st.write(perc_remover.mean()) #
+# st.bar_chart(perc_remover)
 
 # custos remocao 
 # custos = 551 euros/kg reduzido
