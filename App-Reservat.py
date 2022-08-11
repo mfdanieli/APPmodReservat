@@ -107,7 +107,7 @@ user_input_variables = get_user_data()
 prediction, carga_permis, carga_reserv, perc_remover = concentracao(user_input_variables)
 
 graf = st.line_chart(prediction)
-st.write(prediction)
+#st.write(prediction)
 
 
 # # curva permanencia
