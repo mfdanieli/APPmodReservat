@@ -74,9 +74,10 @@ def concentracao(CARGA):#, taxa_Cin, taxa_Qin, taxa_Qout):
 
 st.header('CSTR model: Foz do Areia reservoir')
 
+url = 'https://www.sciencedirect.com/science/article/pii/S0301479722020205?via=ihub'
+encoded_url = urllib.parse.quote(url, safe=':/?=&')
 
-st.subheader('In the side bar you can select a phosphorus load entering the reservoir. A continuously stirred tank reactor (CSTR) model predicts the reservoir output concentrations. More information cab be found in https://www.sciencedirect.com/science/article/pii/S0301479722020205?via%3Dihub'). 
-
+st.subheader('In the side bar, you can select a phosphorus load entering the reservoir. A continuously stirred tank reactor (CSTR) model predicts the reservoir output concentrations. More information can be found in [this article](' + encoded_url + ').')
 
 # dados dos usuários com a função
 def get_user_data():
