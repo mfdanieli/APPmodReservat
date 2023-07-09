@@ -74,19 +74,18 @@ def concentracao(CARGA):#, taxa_Cin, taxa_Qin, taxa_Qout):
 
 st.header('CSTR model: Foz do Areia reservoir')
 
-# with st.expander("How to use"):
-#     st.write("""
-#              In the box at left you can select the input load to the reservoir\n             
-#     """)
+
+# st.write('## In the side bar you can select a phosphorus load entering the reservoir. A continuously stirred tank reactor (CSTR) model predicts the reservoir output concentrations. More information cab be found in https://www.sciencedirect.com/science/article/pii/S0301479722020205?via%3Dihub'). 
 
 
 # dados dos usuários com a função
 def get_user_data():
     # taxa_Qin = st.sidebar.slider('Q_Input (choose % of original)', 1.0, 2.0)
     # taxa_Qout = st.sidebar.slider('Q_Output (choose % of original)', 1.0, 2.0)
-    CARGA = st.sidebar.slider('Load_Input (t/yr)', 0.1 , 1000.0, 0.0)
+    CARGA = st.sidebar.slider('Load Input (t/yr)', 0.1 , 1000.0, 0.0)
     # taxa_Cin = st.sidebar.slider('Conc_Input (choose % of original)', 0.1, 2.0, 1.0)
-  
+
+    
     
     # um dicionário recebe as informações acima
     user_data = {'Load_Input': CARGA
@@ -142,11 +141,11 @@ classe = alt.Chart(data_f).mark_line(opacity=0.6,color='red').encode(
 chart + classe
 
 excedencia = sum(i > 0.03 for i in prediction)
-st.subheader('The number of times class 2 has been exceeded')
+st.subheader('Number of events that exceeded the class 2 limit for total phosphorus during the simulation period:')
 st.write(excedencia)
 
-st.subheader('Mean load to remove (%)')
-st.write(perc_remover.mean()) #
+#st.subheader('Mean load to remove (%)')
+#st.write(perc_remover.mean()) #
 # st.bar_chart(perc_remover)
 
 # custos remocao 
