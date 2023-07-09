@@ -110,11 +110,11 @@ prediction, carga_permis, carga_reserv, perc_remover = concentracao(user_input_v
 
 # graf = st.line_chart(prediction)
 dias = np.arange(0,len(prediction))
-data1 = {'Concentration_prediction (mg/L)':pd.Series(prediction), 'Time (days)': dias}
+data1 = {'Concentration prediction (mg/L)':pd.Series(prediction), 'Time (days)': dias}
 data_f1 = pd.DataFrame(data1)
 graf = alt.Chart(data_f1).mark_line().encode(
     x='Time (days)',
-    y='Concentration_prediction (mg/L)'
+    y='Concentration prediction (mg/L)'
 )         
 graf   
 #st.write(prediction)
